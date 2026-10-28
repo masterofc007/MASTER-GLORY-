@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: master-ff-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install --no-cache-dir -r requirements.txt
+    startCommand: python -u app.py
+    healthCheckPath: /api/ping
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: ACCOUNTS_JSON
+        sync: false
+      - key: PUBLIC_URL
+        sync: false
